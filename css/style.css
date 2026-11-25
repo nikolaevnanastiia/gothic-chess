@@ -123,3 +123,109 @@ body {
 .menu-button:focus-visible::before {
     opacity: 1;
 }
+
+/* Screen Fade */
+#screen-fade {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: #080508;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+#screen-fade.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Loading Screen */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: #080508;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transition: opacity 2.5s ease;
+}
+
+#loading-screen.hidden {
+    display: none;
+}
+#loading-screen.visible {
+    opacity: 1;
+}
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-characters {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0;
+}
+
+.loading-image {
+    display: block;
+    width: 650px;
+    max-width: 90vw;
+    height: auto;
+
+    opacity: 0;
+    transform: scale(0.96);
+    filter: brightness(0.35);
+
+    transition:
+        opacity 4s ease,
+        transform 4s ease,
+        filter 4s ease;
+}
+
+#loading-screen.visible .loading-image {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+}
+
+.loading-quote {
+    color: #c9a47e;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 12px;
+    min-height: 36px;
+    opacity: 0;
+    transition: opacity 0.5s ease 4s;
+}
+
+#loading-screen.visible .loading-quote {
+    opacity: 1; 
+}
+
+@keyframes characterPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
+}
+
+#loading-screen.visible .loading-characters {
+    animation: characterPulse 4s ease-in-out 4s infinite;
+}

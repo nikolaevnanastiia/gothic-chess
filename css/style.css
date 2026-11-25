@@ -8,8 +8,118 @@ body {
 
 #main-menu {
     min-height: 100vh;
-    background-image: url("../assets/backgrounds/main-menu.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    isolation: isolate;
+}
+
+#main-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: url("../assets/backgrounds/main-menu.png") center / cover no-repeat;
+    filter: none;
+}
+
+#main-menu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 28%;
+    right: 28%;
+    z-index: -1;
+
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(12, 7, 15, 0.35) 20%,
+            rgba(12, 7, 15, 0.48) 50%,
+            rgba(12, 7, 15, 0.35) 80%,
+            transparent 100%);
+
+    pointer-events: none;
+}
+
+.menu-logo {
+    display: block;
+    width: 710px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 20px;
+    filter: brightness(0.9) saturate(0.9);
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.menu-button {
+    display: grid;
+    grid-template-columns: 52px 210px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 18px;
+    transition: transform 0.2s ease;
+    position: relative;
+
+    width: 100%;
+    height: 120px;
+
+    background: url("../assets/ui/button-default.png") center / 100% 100% no-repeat;
+    border: none;
+    cursor: pointer;
+
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #fecaa4;
+}
+
+.menu-button+.menu-button {
+    margin-top: -55px;
+}
+.menu-button span {
+    text-align: left;
+}
+
+.button-icon {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    justify-self: center;
+}
+
+.menu-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("../assets/ui/button-hover.png") center / 100% 100% no-repeat;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.menu-button:hover::before {
+    opacity: 1;
+}
+.menu-button:focus {
+    outline: none;
+}
+
+.menu-button:focus-visible::before {
+    opacity: 1;
 }

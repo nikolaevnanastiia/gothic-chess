@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gothic Chess</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <main>
         <section id="main-menu">
+            <img src="./assets/ui/logo.png" alt="Gothic Chess" class="menu-logo">
+            <nav class="menu-buttons" aria-label="Main menu">
+                <button class="menu-button" id="play-computer" type="button">
+                    <img src="./assets/ui/icons/knight.png" alt="" class="button-icon">
+                    <span>Play vs Computer</span>
+                </button>
+                <button class="menu-button" id="local-pvp" type="button">
+                    <img src="./assets/ui/icons/local-pvp.png" alt="" class="button-icon">
+                    <span>Local PvP</span>
+                </button>
+
+                <button class="menu-button" id="settings" type="button">
+                    <img src="./assets/ui/icons/settings.png" alt="" class="button-icon">
+                    <span>Settings</span>
+                </button>
+
+                <button class="menu-button" id="about" type="button">
+                    <img src="./assets/ui/icons/about.png" class="button-icon">
+                    <span>About</span>
+                </button>
+            </nav>
         </section>
     </main>
 
     <script type="module" src="./js/main.js"></script>
 </body>
+
 </html>
